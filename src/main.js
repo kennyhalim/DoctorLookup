@@ -2,20 +2,22 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from 'jquery';
+import Doctor from './doctor';
 
 $(document).ready(function() {
-  $('#weatherLocation').click(function() {
-    let city = $('#location').val();
-    $('#location').val("");
+  $('#searchBySpecialty').submit(function(event) {
+    event.preventDefault();
+    let specialty = $('#specialty').val();
 
 
-    let doctorSearch = new Doctor();  // create instance of WeatherService class
-    let promise = doctorSearch.getDoctorByCondition(condition);  // call the instance method and pass in user input
+    let doctorSearch = new Doctor();
+    let promise = doctorSearch.getDoctorBySpecialty(specialty);
 
     promise.then(function(response) {
-      body = JSON.parse(response);
-      $('.showHumidity').text(`The humidity in ${city} is ${body.main.humidity}%`);
-      $('.showTemp').text(`The temperature in Kelvins is ${body.main.temp} degrees.`);
+      let body = JSON.parse(response);
+      console.log(body);
+      console.log(body.data.profile);
+      $("#test").text(`The doctors that specializes in ${specialty} is ${body.data[0].profile.first_name}`);
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
