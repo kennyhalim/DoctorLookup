@@ -6,26 +6,32 @@
   <body>
     <div class="container">
       <div id="intro">
+        <h1>Doctor Lookup</h1>
+        <br><br>
         <form id="searchAllDoctors">
-          <h1>Search all doctors in Seattle area</h1>
+          <h3>Search all doctors in Seattle area</h3>
           <button type="submit" class="btn btn-success">Search!</button>
         </form>
-        <form id="searchBySpecialty">
-          <h1>Search doctors by Specialty</h1>
+        <br><br>
+          <h3>Search doctors by Specialty</h3>
           <label for="specialty">Type in the doctor's specialty:</label>
           <input id="specialty" type="text" required>
-          <button type="submit" class="btn btn-success">Search!</button>
-        </form>
-        <form id="searchByName">
-          <h1>Search doctors by name</h1>
+          <br>
+          <button type="button" class="btn btn-success" id="searchBySpecialty">Search!</button>
+        <br><br>
+
+          <h3>Search doctors by name</h3>
           <label for="name">Type in the doctor's name:</label>
           <input id="name" type="text" required>
-          <button type="submit" class="btn btn-success">Search!</button>
-        </form>
+          <br>
+          <button type="button" class="btn btn-success" id="searchByName">Search!</button>
       </div>
       <div id="result">
-        <p id="test">te</p>
+        <p id="sentence"></p>
         <ul id="specialtyResult"></ul>
+        <div id="reload">
+          <button type="button" class="btn btn-success" id="mainMenu">Back to main menu</button>
+        </div>
       </div>
     </div>
   </body>

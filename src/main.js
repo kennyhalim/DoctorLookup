@@ -5,22 +5,52 @@ import $ from 'jquery';
 import Doctor from './doctor';
 
 $(document).ready(function() {
-  $('#searchBySpecialty').submit(function(event) {
+  $('#searchBySpecialty').click(function(event) {
     event.preventDefault();
     let specialty = $('#specialty').val();
-
-
     let doctorSearch = new Doctor();
     let promise = doctorSearch.getDoctorBySpecialty(specialty);
-
+    $('#intro').hide();
+    $('#result').show();
     promise.then(function(response) {
       let body = JSON.parse(response);
       console.log(body);
       console.log(body.data.profile);
-      $("#test").text(`The doctors that specializes in ${specialty} is ${body.data[0].profile.first_name}`);
+      // $("#test").text(`The doctors that specializes in ${specialty} is ${body.data[0].profile.first_name}`);
+      $("#sentence").text(`Doctors that specialize in ${specialty} are:`);
+      $('#reload').show();
+      body.data.forEach(function(dat){
+        $("#specialtyResult").append('<li>' + dat.profile.title + '. ' + dat.profile.first_name + ' ' + dat.profile.last_name + '<ul>' + '<li>' + '<strong>Phone Number: </strong>' + dat.practices[0].phones[0].number + '</li>'+ '<li>' + '<strong>Address: </strong>' + dat.practices[0].visit_address.street + ',' + dat.practices[0].visit_address.city + ',' + dat.practices[0].visit_address.state + ',' + dat.practices[0].visit_address.zip + '</li>'+ '<li>' + '<strong>Accept New Patients? </strong>' + dat.practices[0].accepts_new_patients + '</li>' + '</ul>'+'</li>');
+      });
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
   });
 
+  $('#searchByName').click(function(event) {
+    event.preventDefault();
+    let name = $('#name').val();
+    let doctorSearch = new Doctor();
+    let promise = doctorSearch.getDoctorByName(name);
+    $('#intro').hide();
+    $('#result').show();
+
+    promise.then(function(response) {
+      let body = JSON.parse(response);
+      console.log(body);
+      console.log(body.data.profile);
+
+      $("#sentence").text(`Doctors with the name of ${name} are:`);
+      $('#reload').show();
+      body.data.forEach(function(dat){
+        $("#specialtyResult").append('<li>' + dat.profile.title + '. ' + dat.profile.first_name + ' ' + dat.profile.last_name + '<ul>' + '<li>' + '<strong>Phone Number: </strong>' + dat.practices[0].phones[0].number + '</li>'+ '<li>' + '<strong>Address: </strong>' + dat.practices[0].visit_address.street + ',' + dat.practices[0].visit_address.city + ',' + dat.practices[0].visit_address.state + ',' + dat.practices[0].visit_address.zip + '</li>'+ '<li>' + '<strong>Accept New Patients? </strong>' + dat.practices[0].accepts_new_patients + '</li>' + '</ul>'+'</li>');
+      });
+    }, function(error) {
+      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+    });
+  });
+
+  $('#mainMenu').click(function(){
+    location.reload();
+  });
 });
