@@ -60,7 +60,7 @@ $(document).ready(function() {
     promise.then(function(response) {
       let body = JSON.parse(response);
 
-      $("#sentence").text(`Doctors with the name of ${name} are:`);
+      $("#sentence").text(`List of all doctors in Seattle area:`);
       $('#searching').hide();
       $('#reload').show();
       $('#result').show();
