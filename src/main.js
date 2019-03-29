@@ -9,8 +9,8 @@ $(document).ready(function() {
     $('#location').val("");
 
 
-    let weatherService = new WeatherService();  // create instance of WeatherService class
-    let promise = weatherService.getWeatherByCity(city);  // call the instance method and pass in user input
+    let doctorSearch = new Doctor();  // create instance of WeatherService class
+    let promise = doctorSearch.getDoctorByCondition(condition);  // call the instance method and pass in user input
 
     promise.then(function(response) {
       body = JSON.parse(response);

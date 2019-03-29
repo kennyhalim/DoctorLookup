@@ -5,18 +5,24 @@
   </head>
   <body>
     <div class="container">
-      <form id="searchByCondition">
-        <h1>Search doctors by condition</h1>
-        <label for="condition">Type in your condition:</label>
-        <input id="condition" type="text" required>
-        <button type="submit" class="btn btn-success">Search!</button>
-      </form>
-      <form id="searchByName">
-        <h1>Search doctors by name</h1>
-        <label for="name">Type in the doctor's name:</label>
-        <input id="name" type="text" required>
-        <button type="submit" class="btn btn-success">Search!</button>
-      </form>
+      <div id="intro">
+        <form id="searchAllDoctors">
+          <h1>Search all doctors in Seattle area</h1>
+          <button type="submit" class="btn btn-success">Search!</button>
+        </form>
+        <form id="searchBySpecialty">
+          <h1>Search doctors by Specialty</h1>
+          <label for="specialty">Type in the doctor's specialty:</label>
+          <input id="specialty" type="text" required>
+          <button type="submit" class="btn btn-success">Search!</button>
+        </form>
+        <form id="searchByName">
+          <h1>Search doctors by name</h1>
+          <label for="name">Type in the doctor's name:</label>
+          <input id="name" type="text" required>
+          <button type="submit" class="btn btn-success">Search!</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
