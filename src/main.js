@@ -19,11 +19,16 @@ $(document).ready(function() {
       $('#searching').hide();
       $('#result').show();
       $('#reload').show();
-      body.data.forEach(function(dat){
-        $("#specialtyResult").append('<li>' + dat.profile.title + '. ' + dat.profile.first_name + ' ' + dat.profile.last_name + '<ul>' + '<li>' + '<strong>Phone Number: </strong>' + dat.practices[0].phones[0].number + '</li>'+ '<li>' + '<strong>Address: </strong>' + dat.practices[0].visit_address.street + ',' + dat.practices[0].visit_address.city + ',' + dat.practices[0].visit_address.state + ',' + dat.practices[0].visit_address.zip + '</li>'+ '<li>' + '<strong>Accept New Patients? </strong>' + dat.practices[0].accepts_new_patients + '</li>' + '</ul>'+'</li>');
-      });
+      if(body.meta.count > 0){
+        body.data.forEach(function(dat){
+          $("#specialtyResult").append('<li>' + dat.profile.title + '. ' + dat.profile.first_name + ' ' + dat.profile.last_name + '<ul>' + '<li>' + '<strong>Phone Number: </strong>' + dat.practices[0].phones[0].number + '</li>'+ '<li>' + '<strong>Address: </strong>' + dat.practices[0].visit_address.street + ',' + dat.practices[0].visit_address.city + ',' + dat.practices[0].visit_address.state + ',' + dat.practices[0].visit_address.zip + '</li>'+ '<li>' + '<strong>Accept New Patients? </strong>' + dat.practices[0].accepts_new_patients + '</li>' + '</ul>'+'</li>');
+        });
+      }
+      else {
+        $("#sentence").text("No results found.");
+      }
     }, function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+      $('#sentence').text(`There was an error processing your request: ${error.message}`);
     });
   });
 
@@ -42,11 +47,15 @@ $(document).ready(function() {
       $('#searching').hide();
       $('#reload').show();
       $('#result').show();
-      body.data.forEach(function(dat){
-        $("#specialtyResult").append('<li>' + dat.profile.title + '. ' + dat.profile.first_name + ' ' + dat.profile.last_name + '<ul>' + '<li>' + '<strong>Phone Number: </strong>' + dat.practices[0].phones[0].number + '</li>'+ '<li>' + '<strong>Address: </strong>' + dat.practices[0].visit_address.street + ',' + dat.practices[0].visit_address.city + ',' + dat.practices[0].visit_address.state + ',' + dat.practices[0].visit_address.zip + '</li>'+ '<li>' + '<strong>Accept New Patients? </strong>' + dat.practices[0].accepts_new_patients + '</li>' + '</ul>'+'</li>');
-      });
+      if(body.meta.count > 0){
+        body.data.forEach(function(dat){
+          $("#specialtyResult").append('<li>' + dat.profile.title + '. ' + dat.profile.first_name + ' ' + dat.profile.last_name + '<ul>' + '<li>' + '<strong>Phone Number: </strong>' + dat.practices[0].phones[0].number + '</li>'+ '<li>' + '<strong>Address: </strong>' + dat.practices[0].visit_address.street + ',' + dat.practices[0].visit_address.city + ',' + dat.practices[0].visit_address.state + ',' + dat.practices[0].visit_address.zip + '</li>'+ '<li>' + '<strong>Accept New Patients? </strong>' + dat.practices[0].accepts_new_patients + '</li>' + '</ul>'+'</li>');
+        });
+      } else {
+        $("#sentence").text("No results found.");
+      }
     }, function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+      $('#sentence').text(`There was an error processing your request: ${error.message}`);
     });
   });
 
@@ -64,12 +73,16 @@ $(document).ready(function() {
       $('#searching').hide();
       $('#reload').show();
       $('#result').show();
-
-      body.data.forEach(function(dat){
-        $("#specialtyResult").append('<li>' + dat.profile.title + '. ' + dat.profile.first_name + ' ' + dat.profile.last_name + '<ul>' + '<li>' + '<strong>Phone Number: </strong>' + dat.practices[0].phones[0].number + '</li>'+ '<li>' + '<strong>Address: </strong>' + dat.practices[0].visit_address.street + ',' + dat.practices[0].visit_address.city + ',' + dat.practices[0].visit_address.state + ',' + dat.practices[0].visit_address.zip + '</li>'+ '<li>' + '<strong>Accept New Patients? </strong>' + dat.practices[0].accepts_new_patients + '</li>' + '</ul>'+'</li>');
-      });
+      if(body.meta.count > 0){
+        body.data.forEach(function(dat){
+          $("#specialtyResult").append('<li>' + dat.profile.title + '. ' + dat.profile.first_name + ' ' + dat.profile.last_name + '<ul>' + '<li>' + '<strong>Phone Number: </strong>' + dat.practices[0].phones[0].number + '</li>'+ '<li>' + '<strong>Address: </strong>' + dat.practices[0].visit_address.street + ',' + dat.practices[0].visit_address.city + ',' + dat.practices[0].visit_address.state + ',' + dat.practices[0].visit_address.zip + '</li>'+ '<li>' + '<strong>Accept New Patients? </strong>' + dat.practices[0].accepts_new_patients + '</li>' + '</ul>'+'</li>');
+        });
+      }
+      else {
+        $("#sentence").text("No results found.");
+      }
     }, function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+      $('#sentence').text(`There was an error processing your request: ${error.message}`);
     });
   });
 
